@@ -206,8 +206,8 @@ input::placeholder{color:var(--text3);}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
 
 /* Yükleniyor */
-.loading-screen{position:fixed;inset:0;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;z-index:500;}
-.loading-screen.hide{display:none;}
+.loading-screen{position:fixed;inset:0;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;z-index:500;transition:opacity .3s;}
+.loading-screen.hide{opacity:0;pointer-events:none;}
 .spinner{width:36px;height:36px;border:3px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite;}
 @keyframes spin{to{transform:rotate(360deg);}}
 .loading-txt{font-size:14px;color:var(--text2);}
@@ -483,13 +483,20 @@ function odaGet(k){ return get(odaRef(k)).then(s=>s.val()); }
 function odaSet(k,d){ return set(odaRef(k), d); }
 function odaUpdate(k,d){ return update(odaRef(k), d); }
 function odaRemove(k){ return remove(odaRef(k)); }
-function odaDinle(k, cb){
-  if(odaListener){ off(ref(db,'odalar/'+me.oda)); odaListener=null; }
-  odaListener = onValue(ref(db,'odalar/'+k), snap=>cb(snap.val()));
-}
 
 // ── Init ──
-document.getElementById('loading').classList.add('hide');
+try {
+  // Firebase bağlantısını test et
+  get(ref(db, '.info/connected')).then(()=>{
+    document.getElementById('loading').classList.add('hide');
+  }).catch(()=>{
+    document.getElementById('loading').classList.add('hide');
+  });
+  // 3 saniye sonra her halükarda kaldır
+  setTimeout(()=>document.getElementById('loading').classList.add('hide'), 3000);
+} catch(e) {
+  document.getElementById('loading').classList.add('hide');
+}
 renderKats();
 const p = new URLSearchParams(location.search);
 const kodUrl = p.get('oda');
@@ -566,6 +573,9 @@ function onOdaGuncelle(oda){
   const durum = oda.durum;
   const aktifTur = oda.aktifTur||0;
 
+  // Host: oylama tamamlandı mı kontrol et
+  if(durum==='oylama' && me.host) checkOylamaTamamlandi(oda);
+
   // Bekleme ekranı oyuncu listesi
   if(durum==='bekleme'){
     renderBeklemeOyuncular(oda);
@@ -573,7 +583,6 @@ function onOdaGuncelle(oda){
   }
 
   // Durum veya tur değişti
-  const key = durum+'_'+aktifTur;
 
   if(durum==='oyun'){
     if(lastDurum!=='oyun' || lastTur!==aktifTur){
@@ -833,22 +842,12 @@ window.oyVer = async (sahipId, kat, deger)=>{
   }
 };
 
-// Realtime'da oyTamamlandi değişince host kontrol etmeli
-// Bunu listener'da yapıyoruz - durum oylama iken
+// Oylama tamamlanma kontrolü - onOdaGuncelle içinde çağrılır
 async function checkOylamaTamamlandi(oda){
   if(!me.host || oda.durum!=='oylama') return;
   const oyuncular=Object.values(oda.oyuncular||{});
   const herkesVerdimi=oyuncular.every(o=>(oda.oyTamamlandi||{})[o.id]);
   if(herkesVerdimi) await oylamayiBitir(oda);
-}
-
-// onOdaGuncelle'de oylama durumunda çağır
-const _origOnOda = onOdaGuncelle;
-// Override ekle
-function onOdaGuncelle(oda){
-  if(!oda){ toast('Oda kapandı!'); gLanding(); return; }
-  if(oda.durum==='oylama' && me.host) checkOylamaTamamlandi(oda);
-  _origOnOda(oda); // bu recursive olur, direkt içeride halledelim
 }
 
 async function oylamayiBitir(oda){
@@ -947,12 +946,6 @@ function odaDinle(k, cb){
   odaListener=onValue(ref(db,'odalar/'+k), snap=>{
     const oda=snap.val();
     if(!oda){ toast('Oda kapandı!'); gLanding(); return; }
-    // oylama kontrolü host için
-    if(oda.durum==='oylama' && me.host){
-      const oyuncular=Object.values(oda.oyuncular||{});
-      const herkesVerdimi=oyuncular.every(o=>(oda.oyTamamlandi||{})[o.id]);
-      if(herkesVerdimi){ oylamayiBitir(oda); return; }
-    }
     cb(oda);
   });
 }
