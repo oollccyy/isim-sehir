@@ -7,7 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg:#0F1117; --surface:#181B24; --surface2:#1E2130; --surface3:#242840;
+  --bg:#0F1117; --surface:#181B24; --surface2:#1E2130;
   --border:#2A2E3D; --border2:#343850;
   --text:#E8EAF0; --text2:#8B91A8; --text3:#4E5368;
   --accent:#5B8AF0; --accent-bg:#1A2340; --accent-lit:#89ABFF;
@@ -19,24 +19,19 @@
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;font-size:15px;line-height:1.6;}
 
-/* ── HEADER ── */
 header{background:var(--surface);border-bottom:1px solid var(--border);padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:58px;position:sticky;top:0;z-index:200;}
 .logo{font-family:'Syne',sans-serif;font-weight:800;font-size:17px;letter-spacing:-0.03em;display:flex;align-items:center;gap:8px;}
 .logo-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);flex-shrink:0;}
-.header-meta{display:flex;align-items:center;gap:10px;}
 .oda-pill{font-family:'Syne',sans-serif;font-weight:700;font-size:12px;letter-spacing:0.08em;color:var(--accent-lit);background:var(--accent-bg);border:1px solid #2A3A5C;padding:3px 12px;border-radius:20px;display:none;}
 
-/* ── LAYOUT ── */
 .container{max-width:900px;margin:0 auto;padding:2rem 1.5rem;}
 .screen{display:none;}.screen.active{display:block;}
 
-/* ── HERO ── */
 .hero{text-align:center;padding:3rem 0 2.5rem;}
 .hero h1{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(36px,7vw,62px);letter-spacing:-0.04em;line-height:1.05;margin-bottom:.6rem;}
 .hero h1 em{color:var(--accent);font-style:normal;}
 .hero p{color:var(--text2);font-size:16px;font-weight:300;}
 
-/* ── LANDING ── */
 .two-col{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2.5rem;}
 @media(max-width:560px){.two-col{grid-template-columns:1fr;}}
 .opt-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:2rem 1.5rem;text-align:center;cursor:pointer;transition:border-color .2s,background .2s;}
@@ -45,16 +40,27 @@ header{background:var(--surface);border-bottom:1px solid var(--border);padding:0
 .opt-title{font-family:'Syne',sans-serif;font-weight:700;font-size:15px;margin-bottom:.3rem;}
 .opt-desc{font-size:13px;color:var(--text2);line-height:1.5;}
 
-/* ── CARD ── */
+.nasil-section{margin-top:3rem;padding-top:2.5rem;border-top:1px solid var(--border);}
+.nasil-baslik{font-family:'Syne',sans-serif;font-weight:800;font-size:20px;letter-spacing:-.03em;text-align:center;margin-bottom:.4rem;}
+.nasil-alt{text-align:center;color:var(--text2);font-size:14px;margin-bottom:2rem;}
+.adimlar{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1rem;margin-bottom:2rem;}
+.adim{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:1.25rem;}
+.adim-num{font-family:'Syne',sans-serif;font-weight:800;font-size:11px;letter-spacing:.08em;color:var(--accent);background:var(--accent-bg);border:1px solid #2A3A5C;padding:2px 9px;border-radius:10px;display:inline-block;margin-bottom:.75rem;}
+.adim-ikon{font-size:26px;line-height:1;margin-bottom:.5rem;}
+.adim-baslik{font-family:'Syne',sans-serif;font-weight:700;font-size:13px;margin-bottom:.25rem;}
+.adim-acik{font-size:12px;color:var(--text2);line-height:1.55;}
+.kural-listesi{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;}
+@media(max-width:560px){.kural-listesi{grid-template-columns:1fr;}}
+.kural-satir{display:flex;align-items:flex-start;gap:10px;background:var(--surface);border:1px solid var(--border);border-radius:var(--rs);padding:10px 14px;font-size:13px;color:var(--text2);line-height:1.5;}
+.kural-ikon{font-size:15px;flex-shrink:0;margin-top:1px;}
+
 .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:1.5rem;}
 .clabel{font-family:'Syne',sans-serif;font-weight:700;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-bottom:.75rem;}
 
-/* ── INPUTS ── */
 input[type=text],input[type=number]{background:var(--bg);border:1px solid var(--border);border-radius:var(--rs);padding:10px 14px;font-size:14px;color:var(--text);font-family:'DM Sans',sans-serif;transition:border-color .15s;outline:none;width:100%;}
 input:focus{border-color:var(--accent);}
 input::placeholder{color:var(--text3);}
 
-/* ── BUTTONS ── */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:10px 20px;border-radius:var(--rs);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer;transition:all .15s;border:1px solid transparent;white-space:nowrap;}
 .btn:disabled{opacity:.4;cursor:not-allowed;}
 .btn-p{background:var(--accent);color:#fff;border-color:var(--accent);}
@@ -66,7 +72,6 @@ input::placeholder{color:var(--text3);}
 .btn-big{padding:13px 34px;font-size:16px;font-weight:600;border-radius:var(--r);}
 .btn-ic{width:36px;height:36px;padding:0;}
 
-/* ── SETUP ── */
 .setup-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.75rem;}
 @media(max-width:600px){.setup-grid{grid-template-columns:1fr;}}
 .ayar-row{display:flex;align-items:center;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--border);}
@@ -78,7 +83,6 @@ input::placeholder{color:var(--text3);}
 .kat-x{background:none;border:none;color:var(--accent-lit);cursor:pointer;font-size:13px;padding:0;line-height:1;}
 .kat-x:hover{color:var(--red);}
 
-/* ── BEKLEME ── */
 .bekleme-wrap{max-width:520px;margin:0 auto;}
 .oda-box{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:1.75rem;text-align:center;margin-bottom:1rem;}
 .oda-kod-label{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text3);font-weight:600;margin-bottom:.4rem;}
@@ -94,7 +98,6 @@ input::placeholder{color:var(--text3);}
 .pulse{width:7px;height:7px;border-radius:50%;background:var(--green);animation:pulse 1.5s infinite;flex-shrink:0;}
 @keyframes pulse{0%,100%{opacity:1;}50%{opacity:.3;}}
 
-/* ── OYUN ── */
 .oyun-grid{display:grid;grid-template-columns:1fr 260px;gap:1.25rem;align-items:start;}
 @media(max-width:700px){.oyun-grid{grid-template-columns:1fr;}.skor-col{order:-1;}}
 .oyun-header{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:1.25rem 1.5rem;display:flex;align-items:center;gap:1.25rem;margin-bottom:1rem;}
@@ -117,7 +120,6 @@ input::placeholder{color:var(--text3);}
 .alan-inp::placeholder{color:var(--text3);font-weight:400;font-size:15px;font-family:'DM Sans',sans-serif;}
 .oyun-actions{display:flex;gap:8px;}
 
-/* ── SKOR PANEL ── */
 .skor-col{position:sticky;top:70px;display:flex;flex-direction:column;gap:.9rem;}
 .panel-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;}
 .panel-head{padding:11px 14px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
@@ -134,10 +136,9 @@ input::placeholder{color:var(--text3);}
 .durum-rows{padding:7px;display:flex;flex-direction:column;gap:3px;}
 .durum-row{display:flex;align-items:center;gap:8px;padding:8px 11px;border-radius:var(--rs);font-size:13px;}
 
-/* ── OY EKRANI ── */
 .oy-wrap{max-width:780px;margin:0 auto;}
 .oy-baslik{font-family:'Syne',sans-serif;font-weight:800;font-size:22px;letter-spacing:-.03em;margin-bottom:.3rem;}
-.oy-alt{color:var(--text2);font-size:14px;margin-bottom:1.5rem;}
+.oy-alt{color:var(--text2);font-size:14px;margin-bottom:1.25rem;}
 .oy-progress-track{height:4px;background:var(--surface2);border-radius:2px;overflow:hidden;margin-bottom:1.5rem;}
 .oy-progress-fill{height:100%;background:var(--accent);border-radius:2px;transition:width .4s ease;}
 .oyuncu-oy-kart{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);margin-bottom:1rem;overflow:hidden;}
@@ -152,25 +153,19 @@ input::placeholder{color:var(--text3);}
 .cevap-val.bos{color:var(--text3);font-weight:400;font-style:italic;font-size:13px;}
 .oy-btns{display:flex;gap:6px;flex-shrink:0;}
 .oy-btn{padding:5px 14px;border-radius:20px;border:1px solid var(--border);background:var(--surface2);font-size:13px;font-weight:600;cursor:pointer;transition:all .15s;font-family:'DM Sans',sans-serif;color:var(--text2);}
-.oy-btn:hover{border-color:var(--border2);}
 .oy-btn.onayli{background:var(--green-bg);color:var(--green);border-color:var(--green-border);}
 .oy-btn.reddedildi{background:var(--red-bg);color:var(--red);border-color:var(--red-border);}
-.oy-btn.disabled-vote{opacity:.35;cursor:not-allowed;}
+.oy-btn:disabled{opacity:.35;cursor:not-allowed;}
 .oy-sonuc-bar{display:flex;align-items:center;gap:8px;padding:4px 16px 8px;font-size:12px;color:var(--text3);}
 .mini-oy{display:flex;gap:3px;}
 .mini-dot{width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;border:1px solid var(--border);background:var(--bg);}
 .mini-dot.ok{background:var(--green-bg);border-color:var(--green-border);color:var(--green);}
 .mini-dot.no{background:var(--red-bg);border-color:var(--red-border);color:var(--red);}
-.mini-dot.bekle{color:var(--text3);}
-
-/* kendi cevaplarını oy veremez vurgusu */
 .kendi-satir{opacity:.6;}
-.kendi-label{font-size:11px;color:var(--text3);font-style:italic;margin-left:4px;}
+.kendi-label{font-size:11px;color:var(--text3);font-style:italic;}
 
-/* ── SONUÇ EKRANI ── */
 .sonuc-wrap{max-width:720px;margin:0 auto;}
-.sonuc-baslik-row{display:flex;align-items:center;gap:12px;margin-bottom:1.25rem;}
-.sonuc-h{font-family:'Syne',sans-serif;font-weight:800;font-size:20px;letter-spacing:-.03em;}
+.sonuc-h{font-family:'Syne',sans-serif;font-weight:800;font-size:20px;letter-spacing:-.03em;margin-bottom:1.25rem;}
 .sonuc-cards{display:flex;flex-direction:column;gap:10px;margin-bottom:1.5rem;}
 .sonuc-oyuncu-kart{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;}
 .sonuc-oyuncu-head{padding:10px 16px;background:var(--surface2);display:flex;align-items:center;gap:10px;}
@@ -182,11 +177,10 @@ input::placeholder{color:var(--text3);}
 .sonuc-cevap-row:last-child{border-bottom:none;}
 .sonuc-kat{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text3);min-width:64px;}
 .sonuc-val{flex:1;font-weight:500;font-size:14px;}
-.sonuc-oy-say{font-size:12px;color:var(--text3);text-align:right;}
+.sonuc-oy-say{font-size:12px;color:var(--text3);}
 .sonuc-oy-say.tam{color:var(--green);}
 .sonuc-oy-say.sifir{color:var(--red);}
 
-/* ── KAZANAN ── */
 .kazanan-wrap{text-align:center;padding:2rem 0 1.25rem;}
 .kazanan-kupa{font-size:52px;line-height:1;margin-bottom:.5rem;}
 .kazanan-isim{font-family:'Syne',sans-serif;font-weight:800;font-size:26px;letter-spacing:-.04em;margin-bottom:.2rem;}
@@ -199,7 +193,6 @@ input::placeholder{color:var(--text3);}
 .final-isim{flex:1;font-weight:500;}
 .final-puan{font-family:'Syne',sans-serif;font-weight:700;font-size:15px;color:var(--accent);}
 
-/* ── MODAL ── */
 .overlay{position:fixed;inset:0;background:rgba(8,10,16,.8);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;z-index:300;padding:1rem;opacity:0;pointer-events:none;transition:opacity .2s;}
 .overlay.show{opacity:1;pointer-events:all;}
 .modal{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);width:100%;max-width:480px;box-shadow:0 16px 48px rgba(0,0,0,.6);transform:translateY(16px) scale(.97);transition:transform .22s cubic-bezier(.34,1.56,.64,1);max-height:90vh;overflow-y:auto;}
@@ -209,51 +202,43 @@ input::placeholder{color:var(--text3);}
 .modal-body{padding:1.5rem;}
 .modal-foot{padding:1rem 1.5rem;border-top:1px solid var(--border);display:flex;gap:8px;justify-content:flex-end;position:sticky;bottom:0;background:var(--surface);}
 
-/* ── TOAST ── */
 .toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(16px);background:#E8EAF0;color:#0F1117;padding:9px 20px;border-radius:100px;font-size:14px;font-weight:500;opacity:0;transition:all .22s;pointer-events:none;z-index:400;white-space:nowrap;}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
 
-/* ── NASIL OYNANIR ── */
-.nasil-section{margin-top:3rem;padding-top:2.5rem;border-top:1px solid var(--border);}
-.nasil-baslik{font-family:'Syne',sans-serif;font-weight:800;font-size:20px;letter-spacing:-.03em;text-align:center;margin-bottom:.4rem;}
-.nasil-alt{text-align:center;color:var(--text2);font-size:14px;margin-bottom:2rem;}
-.adimlar{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-bottom:2rem;}
-.adim{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:1.25rem 1.25rem 1.25rem;position:relative;transition:border-color .2s;}
-.adim:hover{border-color:var(--border2);}
-.adim-num{font-family:'Syne',sans-serif;font-weight:800;font-size:11px;letter-spacing:.08em;color:var(--accent);background:var(--accent-bg);border:1px solid #2A3A5C;padding:2px 9px;border-radius:10px;display:inline-block;margin-bottom:.75rem;}
-.adim-ikon{font-size:28px;line-height:1;margin-bottom:.6rem;}
-.adim-baslik{font-family:'Syne',sans-serif;font-weight:700;font-size:14px;margin-bottom:.3rem;}
-.adim-acik{font-size:13px;color:var(--text2);line-height:1.55;}
-.kural-listesi{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;}
-@media(max-width:560px){.kural-listesi{grid-template-columns:1fr;}}
-.kural-satir{display:flex;align-items:flex-start;gap:10px;background:var(--surface);border:1px solid var(--border);border-radius:var(--rs);padding:10px 14px;font-size:13px;color:var(--text2);line-height:1.5;}
-.kural-ikon{font-size:16px;flex-shrink:0;margin-top:1px;}
+/* Yükleniyor */
+.loading-screen{position:fixed;inset:0;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;z-index:500;}
+.loading-screen.hide{display:none;}
+.spinner{width:36px;height:36px;border:3px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.loading-txt{font-size:14px;color:var(--text2);}
 
-/* misc */
 .bos{text-align:center;padding:1.5rem;color:var(--text3);font-size:14px;}
 .info-box{background:var(--surface2);border-radius:var(--rs);padding:9px 14px;font-size:13px;color:var(--text2);margin-top:.75rem;}
-.divider{text-align:center;color:var(--text3);font-size:13px;margin:1.25rem 0;position:relative;}
-.divider::before{content:'';position:absolute;top:50%;left:0;right:0;height:1px;background:var(--border);}
-.divider span{background:var(--bg);padding:0 12px;position:relative;}
 ::-webkit-scrollbar{width:4px;}::-webkit-scrollbar-track{background:transparent;}::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px;}
 </style>
 </head>
 <body>
 
+<!-- Yükleniyor -->
+<div class="loading-screen" id="loading">
+  <div class="spinner"></div>
+  <div class="loading-txt">Bağlanıyor...</div>
+</div>
+
 <header>
   <div class="logo"><span class="logo-dot"></span>İsim Şehir</div>
-  <div class="header-meta">
+  <div style="display:flex;align-items:center;gap:10px;">
     <span class="oda-pill" id="h-oda"></span>
     <button class="btn btn-g" id="h-cikis" style="display:none" onclick="cikisYap()">← Çıkış</button>
   </div>
 </header>
 
-<!-- ══ LANDING ══ -->
+<!-- LANDING -->
 <div id="s-landing" class="screen active">
   <div class="container">
     <div class="hero">
       <h1>İsim <em>Şehir</em><br>Hayvan Bitki</h1>
-      <p>Arkadaşlarınla oyna — herkes birbirini oylar!</p>
+      <p>Arkadaşlarınla online oyna — herkes birbirini oylar!</p>
     </div>
     <div class="two-col">
       <div class="opt-card" onclick="gOdaKur()">
@@ -267,60 +252,30 @@ input::placeholder{color:var(--text3);}
         <div class="opt-desc">Oda kodu veya link ile mevcut bir oyuna gir.</div>
       </div>
     </div>
-
-    <!-- NASIL OYNANIR -->
     <div class="nasil-section">
       <div class="nasil-baslik">Nasıl Oynanır?</div>
       <div class="nasil-alt">5 adımda anlat, dakikada öğren</div>
-
       <div class="adimlar">
-        <div class="adim">
-          <div class="adim-num">ADIM 1</div>
-          <div class="adim-ikon">🏠</div>
-          <div class="adim-baslik">Oda Kur & Davet Et</div>
-          <div class="adim-acik">Bir oda oluştur, tura sayısını ve süreyi ayarla. Çıkan linki veya oda kodunu arkadaşlarına gönder.</div>
-        </div>
-        <div class="adim">
-          <div class="adim-num">ADIM 2</div>
-          <div class="adim-ikon">🔤</div>
-          <div class="adim-baslik">Harf Çıkar, Yaz!</div>
-          <div class="adim-acik">Her tur rastgele bir harf belirlenir. Süre dolmadan o harfle başlayan İsim, Şehir, Hayvan ve Bitki yaz.</div>
-        </div>
-        <div class="adim">
-          <div class="adim-num">ADIM 3</div>
-          <div class="adim-ikon">✋</div>
-          <div class="adim-baslik">Dur! De</div>
-          <div class="adim-acik">Cevaplarını tamamlayınca "Dur!" butonuna bas. Süre dolunca da cevaplar otomatik gönderilir.</div>
-        </div>
-        <div class="adim">
-          <div class="adim-num">ADIM 4</div>
-          <div class="adim-ikon">🗳️</div>
-          <div class="adim-baslik">Herkes Oylar</div>
-          <div class="adim-acik">Oylama ekranı açılır. Herkes, diğer oyuncuların her cevabını ✓ Onayla veya ✗ Reddet ile oylar. Kendi cevabına oy veremezsin.</div>
-        </div>
-        <div class="adim">
-          <div class="adim-num">ADIM 5</div>
-          <div class="adim-ikon">🏆</div>
-          <div class="adim-baslik">Puan Kazan</div>
-          <div class="adim-acik">En az 1 onay alan her cevap tam puan kazandırır. Tüm turlar bitince en yüksek puanlı oyuncu kazanır!</div>
-        </div>
+        <div class="adim"><div class="adim-num">ADIM 1</div><div class="adim-ikon">🏠</div><div class="adim-baslik">Oda Kur & Davet Et</div><div class="adim-acik">Oda oluştur, tur sayısı ve süreyi ayarla. Linki arkadaşlarına gönder.</div></div>
+        <div class="adim"><div class="adim-num">ADIM 2</div><div class="adim-ikon">🔤</div><div class="adim-baslik">Harf Çıkar, Yaz!</div><div class="adim-acik">Her tur rastgele bir harf belirlenir. Süre dolmadan o harfle başlayan cevapları yaz.</div></div>
+        <div class="adim"><div class="adim-num">ADIM 3</div><div class="adim-ikon">✋</div><div class="adim-baslik">Dur! De</div><div class="adim-acik">Cevaplarını tamamlayınca "Dur!" bas. Süre dolunca otomatik gönderilir.</div></div>
+        <div class="adim"><div class="adim-num">ADIM 4</div><div class="adim-ikon">🗳️</div><div class="adim-baslik">Herkes Oylar</div><div class="adim-acik">Oylama ekranı açılır. Herkes diğerlerinin cevaplarını ✓ veya ✗ ile oylar.</div></div>
+        <div class="adim"><div class="adim-num">ADIM 5</div><div class="adim-ikon">🏆</div><div class="adim-baslik">Puan Kazan</div><div class="adim-acik">En az 1 onay alan cevap tam puan kazandırır. En yüksek puan kazanır!</div></div>
       </div>
-
       <div class="clabel" style="text-align:center;margin-bottom:.75rem;">Önemli Kurallar</div>
       <div class="kural-listesi">
-        <div class="kural-satir"><span class="kural-ikon">✓</span><span>Cevap verilen harfle başlamalıdır — aksi hâlde geçersiz sayılır ve oy bile verilmez.</span></div>
-        <div class="kural-satir"><span class="kural-ikon">🗳️</span><span>Oylama demokratiktir — herkes oy kullanmadan sonuç açıklanmaz.</span></div>
-        <div class="kural-satir"><span class="kural-ikon">👤</span><span>Kendi cevabına oy veremezsin. Sadece diğer oyuncuları onaylayabilir veya reddedebilirsin.</span></div>
-        <div class="kural-satir"><span class="kural-ikon">⚡</span><span>Süre sona erince cevaplar otomatik gönderilir, oylama başlar.</span></div>
-        <div class="kural-satir"><span class="kural-ikon">➕</span><span>Kategorileri istediğin gibi özelleştirebilirsin: Ülke, Renk, Film, Yemek ve daha fazlası.</span></div>
-        <div class="kural-satir"><span class="kural-ikon">🔗</span><span>Aynı tarayıcıda farklı sekmeler arasında çalışır. Arkadaşlarınla dene!</span></div>
+        <div class="kural-satir"><span class="kural-ikon">✓</span><span>Cevap verilen harfle başlamalıdır.</span></div>
+        <div class="kural-satir"><span class="kural-ikon">🗳️</span><span>Herkes oy kullanmadan sonuç açıklanmaz.</span></div>
+        <div class="kural-satir"><span class="kural-ikon">👤</span><span>Kendi cevabına oy veremezsin.</span></div>
+        <div class="kural-satir"><span class="kural-ikon">⚡</span><span>Süre sona erince cevaplar otomatik gönderilir.</span></div>
+        <div class="kural-satir"><span class="kural-ikon">🌍</span><span>Farklı cihazlardan gerçek zamanlı oynanır!</span></div>
+        <div class="kural-satir"><span class="kural-ikon">➕</span><span>Kategorileri istediğin gibi özelleştirebilirsin.</span></div>
       </div>
     </div>
-
   </div>
 </div>
 
-<!-- ══ ODA KUR ══ -->
+<!-- ODA KUR -->
 <div id="s-odakur" class="screen">
   <div class="container">
     <button class="btn btn-g" onclick="gLanding()" style="margin-bottom:1.25rem;">← Geri</button>
@@ -340,10 +295,7 @@ input::placeholder{color:var(--text3);}
       <div class="card" style="grid-column:1/-1">
         <div class="clabel">Kategoriler</div>
         <div class="kat-wrap" id="kat-wrap"></div>
-        <div style="display:flex;gap:8px;">
-          <input type="text" id="kat-inp" placeholder="Yeni kategori ekle..." style="flex:1;">
-          <button class="btn btn-s" onclick="katEkle()">Ekle</button>
-        </div>
+        <div style="display:flex;gap:8px;"><input type="text" id="kat-inp" placeholder="Yeni kategori ekle..." style="flex:1;"><button class="btn btn-s" onclick="katEkle()">Ekle</button></div>
       </div>
     </div>
     <div style="display:flex;justify-content:center;margin-top:1.75rem;">
@@ -352,43 +304,34 @@ input::placeholder{color:var(--text3);}
   </div>
 </div>
 
-<!-- ══ KATIL ══ -->
+<!-- KATIL -->
 <div id="s-katil" class="screen">
   <div class="container">
     <button class="btn btn-g" onclick="gLanding()" style="margin-bottom:1.25rem;">← Geri</button>
     <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:24px;letter-spacing:-.03em;margin-bottom:.2rem;">Odaya Katıl</div>
     <p style="color:var(--text2);font-size:14px;">Oda kodunu ve adını gir.</p>
     <div style="max-width:380px;margin-top:1.25rem;display:flex;flex-direction:column;gap:12px;">
-      <div>
-        <div class="clabel" style="margin-bottom:6px;">Oda Kodu</div>
-        <input type="text" id="k-kod" placeholder="Örn: KARTAL42" style="text-transform:uppercase;font-size:19px;letter-spacing:.1em;font-weight:600;" maxlength="12">
-      </div>
-      <div>
-        <div class="clabel" style="margin-bottom:6px;">Adın</div>
-        <input type="text" id="k-isim" placeholder="Adınız..." maxlength="20">
-      </div>
+      <div><div class="clabel" style="margin-bottom:6px;">Oda Kodu</div><input type="text" id="k-kod" placeholder="Örn: KARTAL42" style="text-transform:uppercase;font-size:19px;letter-spacing:.1em;font-weight:600;" maxlength="12"></div>
+      <div><div class="clabel" style="margin-bottom:6px;">Adın</div><input type="text" id="k-isim" placeholder="Adınız..." maxlength="20"></div>
       <button class="btn btn-p btn-big" onclick="odaKatil()">Katıl →</button>
     </div>
   </div>
 </div>
 
-<!-- ══ BEKLEME ══ -->
+<!-- BEKLEME -->
 <div id="s-bekleme" class="screen">
   <div class="container">
     <div class="bekleme-wrap">
       <div class="oda-box">
         <div class="oda-kod-label">Oda Kodu</div>
         <div class="oda-kod" id="b-kod">----</div>
-        <div class="link-row">
-          <span class="link-txt" id="b-link">—</span>
-          <button class="btn btn-g btn-ic" onclick="kopyalaLink()" style="font-size:17px;flex-shrink:0;">⎘</button>
-        </div>
+        <div class="link-row"><span class="link-txt" id="b-link">—</span><button class="btn btn-g btn-ic" onclick="kopyalaLink()" style="font-size:17px;flex-shrink:0;">⎘</button></div>
         <div style="font-size:13px;color:var(--text2);">Bu kodu veya linki arkadaşlarına gönder</div>
       </div>
       <div class="card" style="margin-bottom:1rem;">
         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.6rem;">
           <div class="clabel" style="margin:0;">Oyuncular</div>
-          <div style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text3);"><div class="pulse"></div>Bekleniyor</div>
+          <div style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text3);"><div class="pulse"></div>Canlı</div>
         </div>
         <div class="oyuncu-list" id="b-oyuncular"><div class="bos">Kimse yok henüz</div></div>
       </div>
@@ -405,7 +348,7 @@ input::placeholder{color:var(--text3);}
   </div>
 </div>
 
-<!-- ══ OYUN ══ -->
+<!-- OYUN -->
 <div id="s-oyun" class="screen">
   <div class="container">
     <div class="oyun-grid">
@@ -417,20 +360,17 @@ input::placeholder{color:var(--text3);}
             <div class="sure-num" id="sure-num">—</div>
             <div class="sure-track"><div class="sure-fill" id="sure-fill" style="width:100%"></div></div>
           </div>
-          <button class="btn btn-s btn-ic" id="btn-dur-dur" onclick="toggleDur()" style="font-size:16px;">⏸</button>
+          <button class="btn btn-s btn-ic" id="btn-dur-dur" onclick="toggleDur()" style="font-size:16px;display:none;">⏸</button>
         </div>
         <div class="kat-grid" id="kat-grid"></div>
         <div class="oyun-actions">
           <button class="btn btn-p" id="btn-dur" onclick="durKontrol()" style="flex:1;">Dur! Cevapları Gönder</button>
         </div>
-        <div id="gonderildi-box" style="display:none;" class="info-box">✓ Cevapların gönderildi — diğerleri bekleniyor...</div>
+        <div id="gonderildi-box" style="display:none;" class="info-box">✓ Cevapların gönderildi — oylama başlıyor...</div>
       </div>
       <div class="skor-col">
         <div class="panel-card">
-          <div class="panel-head">
-            <div class="panel-title">Skor</div>
-            <div class="tur-badge" id="tur-badge">Tur 1</div>
-          </div>
+          <div class="panel-head"><div class="panel-title">Skor</div><div class="tur-badge" id="tur-badge">Tur 1</div></div>
           <div class="skor-rows" id="skor-rows"></div>
         </div>
         <div class="panel-card">
@@ -442,30 +382,26 @@ input::placeholder{color:var(--text3);}
   </div>
 </div>
 
-<!-- ══ OY EKRANI ══ -->
+<!-- OY EKRANI -->
 <div id="s-oy" class="screen">
   <div class="container">
     <div class="oy-wrap">
       <div class="oy-baslik" id="oy-baslik">Oylama</div>
-      <div class="oy-alt" id="oy-alt">Herkesin cevabını oyla</div>
+      <div class="oy-alt" id="oy-alt">Her oyuncunun cevabını oyla</div>
       <div class="oy-progress-track"><div class="oy-progress-fill" id="oy-progress" style="width:0%"></div></div>
       <div id="oy-kartlar"></div>
-      <div class="info-box" id="oy-info-box" style="display:none;text-align:center;">
-        ✓ Oylarını verdin — diğerleri bekleniyor...
-      </div>
+      <div class="info-box" id="oy-info-box" style="display:none;text-align:center;">✓ Oylarını verdin — diğerleri bekleniyor...</div>
     </div>
   </div>
 </div>
 
-<!-- ══ TUR SONUCU ══ -->
+<!-- SONUÇ -->
 <div id="s-sonuc" class="screen">
   <div class="container">
     <div class="sonuc-wrap">
-      <div class="sonuc-baslik-row">
-        <div class="sonuc-h" id="sonuc-baslik">Tur Sonucu</div>
-      </div>
+      <div class="sonuc-h" id="sonuc-baslik">Tur Sonucu</div>
       <div class="sonuc-cards" id="sonuc-kartlar"></div>
-      <div style="display:flex;justify-content:center;" id="sonuc-aksiyon">
+      <div style="display:flex;justify-content:center;gap:10px;" id="sonuc-aksiyon">
         <button class="btn btn-p btn-big" id="btn-sonraki" onclick="sonrakiTur()" style="display:none;">Sonraki Tur →</button>
         <div id="sonuc-bekle-box" class="info-box" style="text-align:center;display:none;">Host sonraki turu başlatıyor...</div>
       </div>
@@ -473,7 +409,7 @@ input::placeholder{color:var(--text3);}
   </div>
 </div>
 
-<!-- ══ OYUN BİTTİ ══ -->
+<!-- OYUN BİTTİ -->
 <div class="overlay" id="modal-bitis">
   <div class="modal">
     <div class="modal-head"><div class="modal-title">Oyun Bitti! 🎉</div></div>
@@ -485,37 +421,44 @@ input::placeholder{color:var(--text3);}
       </div>
       <div class="final-list" id="final-list"></div>
     </div>
-    <div class="modal-foot">
-      <button class="btn btn-p" onclick="cikisYap()">Ana Sayfa</button>
-    </div>
+    <div class="modal-foot"><button class="btn btn-p" onclick="cikisYap()">Ana Sayfa</button></div>
   </div>
 </div>
 
 <div class="toast" id="toast"></div>
 
-<script>
-// ══════════════════════════════════════════════════════════════════
-// STORAGE: localStorage aynı cihazdaki farklı sekmelerde çalışır.
-// Farklı cihazlar için Firebase/Supabase backend gerekir.
-// ══════════════════════════════════════════════════════════════════
+<!-- Firebase SDK -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getDatabase, ref, set, get, update, onValue, off, remove } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
 
+const firebaseConfig = {
+  apiKey: "AIzaSyBhlL736ViqTfz-LalUDjG6BvBfgPtZBnI",
+  authDomain: "isim-sehir-21087.firebaseapp.com",
+  databaseURL: "https://isim-sehir-21087-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "isim-sehir-21087",
+  storageBucket: "isim-sehir-21087.firebasestorage.app",
+  messagingSenderId: "591388633728",
+  appId: "1:591388633728:web:8047309557ab7a9f5e1465"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+
+// ══════════════════════════════════════════════
+// STATE
+// ══════════════════════════════════════════════
 const HARFLER = 'ABCDEFGHİKLMNOPRSTUYZ'.split('');
 const DEF_KATS = ['İsim','Şehir','Hayvan','Bitki'];
-const POLL = 1000;
 
-// ── State ──
 let me = { id: uid(), isim:'', oda:'', host:false };
 let kats = [...DEF_KATS];
-let pollT = null, gameT = null;
-let cevapVerildi = false, oyVerildi = false;
+let gameTimer = null;
+let cevapVerildi = false;
 let duraklandi = false;
-let lastKey = '';
-
-// ── Storage ──
-const KEY = k => 'isimSehir3_' + k;
-function odaOku(k){ try{ return JSON.parse(localStorage.getItem(KEY(k))); }catch{ return null; } }
-function odaYaz(k,d){ localStorage.setItem(KEY(k), JSON.stringify(d)); }
-function odaSil(k){ localStorage.removeItem(KEY(k)); }
+let odaListener = null;
+let lastDurum = '';
+let lastTur = 0;
 
 // ── Utils ──
 function uid(){ return Math.random().toString(36).slice(2,10); }
@@ -529,142 +472,179 @@ function norm(h){
     .replace(/Ö/g,'O').replace(/ö/g,'O').replace(/Ç/g,'C').replace(/ç/g,'C');
 }
 function yeniHarf(){ return HARFLER[Math.floor(Math.random()*HARFLER.length)]; }
-function toast(m){
-  const t=document.getElementById('toast'); t.textContent=m;
-  t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),2400);
-}
+function toast(m){ const t=document.getElementById('toast'); t.textContent=m; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),2400); }
 function switchS(id){ document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active')); document.getElementById(id).classList.add('active'); }
 function modalAc(id){ document.getElementById(id).classList.add('show'); }
 function modalKapat(id){ document.getElementById(id).classList.remove('show'); }
 
-// ── Navigation ──
-function gLanding(){ stopAll(); me.oda=''; me.host=false; lastKey=''; hideHeader(); switchS('s-landing'); }
-function gOdaKur(){ renderKats(); switchS('s-odakur'); }
-function gKatil(){
-  const p=new URLSearchParams(window.location.search); const k=p.get('oda');
-  if(k) document.getElementById('k-kod').value=k.toUpperCase();
-  switchS('s-katil');
+// ── DB helpers ──
+function odaRef(k){ return ref(db, 'odalar/' + k); }
+function odaGet(k){ return get(odaRef(k)).then(s=>s.val()); }
+function odaSet(k,d){ return set(odaRef(k), d); }
+function odaUpdate(k,d){ return update(odaRef(k), d); }
+function odaRemove(k){ return remove(odaRef(k)); }
+function odaDinle(k, cb){
+  if(odaListener){ off(ref(db,'odalar/'+me.oda)); odaListener=null; }
+  odaListener = onValue(ref(db,'odalar/'+k), snap=>cb(snap.val()));
 }
+
+// ── Init ──
+document.getElementById('loading').classList.add('hide');
+renderKats();
+const p = new URLSearchParams(location.search);
+const kodUrl = p.get('oda');
+if(kodUrl){ document.getElementById('k-kod').value=kodUrl.toUpperCase(); switchS('s-katil'); }
+
+// ── Navigation ──
+function gLanding(){ stopDinle(); stopGameTimer(); me.oda=''; me.host=false; lastDurum=''; lastTur=0; hideHeader(); switchS('s-landing'); }
+window.gLanding = gLanding;
+window.gOdaKur = ()=>{ renderKats(); switchS('s-odakur'); };
+window.gKatil = ()=>{ const p=new URLSearchParams(location.search); const k=p.get('oda'); if(k) document.getElementById('k-kod').value=k.toUpperCase(); switchS('s-katil'); };
+
+function setupHeader(kod){ document.getElementById('h-oda').textContent=kod; document.getElementById('h-oda').style.display='block'; document.getElementById('h-cikis').style.display='flex'; }
+function hideHeader(){ document.getElementById('h-oda').style.display='none'; document.getElementById('h-cikis').style.display='none'; }
 
 // ── Kategoriler ──
-function renderKats(){
-  document.getElementById('kat-wrap').innerHTML = kats.map((k,i)=>`
-    <div class="kat-chip">${k}<button class="kat-x" onclick="katSil(${i})">×</button></div>`).join('');
-}
-function katEkle(){ const i=document.getElementById('kat-inp'); const v=i.value.trim(); if(!v) return; if(kats.includes(v)){toast('Zaten var!');return;} kats.push(v); i.value=''; renderKats(); }
-function katSil(i){ if(kats.length<=1){toast('En az 1 kategori olmalı!');return;} kats.splice(i,1); renderKats(); }
+function renderKats(){ document.getElementById('kat-wrap').innerHTML=kats.map((k,i)=>`<div class="kat-chip">${k}<button class="kat-x" onclick="katSil(${i})">×</button></div>`).join(''); }
+window.katEkle = ()=>{ const i=document.getElementById('kat-inp'); const v=i.value.trim(); if(!v) return; if(kats.includes(v)){toast('Zaten var!');return;} kats.push(v); i.value=''; renderKats(); };
+window.katSil = i=>{ if(kats.length<=1){toast('En az 1 kategori!');return;} kats.splice(i,1); renderKats(); };
 
 // ── Oda Oluştur ──
-function odaOlustur(){
+window.odaOlustur = async ()=>{
   const isim = document.getElementById('host-isim').value.trim();
   if(!isim){ toast('Adını yaz!'); return; }
   const kod = kodUret();
   me.isim=isim; me.oda=kod; me.host=true;
   const oda = {
-    kod, hostId: me.id,
+    kod, hostId:me.id,
     ayar:{ tur:+document.getElementById('a-tur').value||10, sure:+document.getElementById('a-sure').value||60, puan:+document.getElementById('a-puan').value||10, kats:[...kats] },
-    oyuncular:[{id:me.id, isim, puan:0, host:true}],
-    durum:'bekleme', // bekleme|oyun|oylama|sonuc|bitis
-    aktifTur:0, harf:'',
-    cevaplar:{},  // {oyuncuId: {kat:deger,...}}
-    oylar:{},     // {cevapSahibiId: {katAdı: {oylayanId: true/false,...},...},...}
-    oyTamamlandi:{}, // {oylayanId: true}
-    turBaslangic:0,
-    olusturma:Date.now()
+    oyuncular:{ [me.id]:{id:me.id,isim,puan:0,host:true} },
+    durum:'bekleme', aktifTur:0, harf:'', cevaplar:{}, oylar:{}, oyTamamlandi:{}, turBaslangic:0
   };
-  odaYaz(kod, oda);
-  goBekleme(oda);
-}
+  await odaSet(kod, oda);
+  goBekleme(kod);
+};
 
 // ── Oda Katıl ──
-function odaKatil(){
+window.odaKatil = async ()=>{
   const kod = document.getElementById('k-kod').value.trim().toUpperCase();
   const isim = document.getElementById('k-isim').value.trim();
   if(!kod){ toast('Oda kodunu gir!'); return; }
   if(!isim){ toast('Adını yaz!'); return; }
-  const oda = odaOku(kod);
+  const oda = await odaGet(kod);
   if(!oda){ toast('Oda bulunamadı!'); return; }
   if(oda.durum==='bitis'){ toast('Bu oyun bitti.'); return; }
-  if(oda.oyuncular.find(o=>o.isim===isim&&o.id!==me.id)){ toast('Bu isim kullanımda!'); return; }
+  const oyuncular = oda.oyuncular||{};
+  const isimKullanımda = Object.values(oyuncular).some(o=>o.isim===isim && o.id!==me.id);
+  if(isimKullanımda){ toast('Bu isim kullanımda!'); return; }
   me.isim=isim; me.oda=kod; me.host=false;
-  // Zaten kayıtlı değilse ekle
-  if(!oda.oyuncular.find(o=>o.id===me.id)){
-    oda.oyuncular.push({id:me.id, isim, puan:0, host:false});
-    odaYaz(kod, oda);
-  }
-  if(oda.durum==='oyun'){ setupHeader(kod); switchS('s-oyun'); renderOyunSayfasi(oda); startPoll(pollOyun); }
-  else if(oda.durum==='oylama'){ setupHeader(kod); switchS('s-oy'); renderOySayfasi(oda); startPoll(pollOy); }
-  else if(oda.durum==='sonuc'){ setupHeader(kod); switchS('s-sonuc'); renderSonucSayfasi(oda); startPoll(pollSonuc); }
-  else goBekleme(oda);
-}
+  await update(ref(db,`odalar/${kod}/oyuncular/${me.id}`), {id:me.id,isim,puan:0,host:false});
+  goBekleme(kod);
+};
 
 // ── Bekleme ──
-function goBekleme(oda){
-  setupHeader(oda.kod);
-  const link = location.origin + location.pathname + '?oda=' + oda.kod;
-  document.getElementById('b-kod').textContent = oda.kod;
-  document.getElementById('b-link').textContent = link;
-  document.getElementById('b-host-ctrl').style.display = me.host ? 'block' : 'none';
-  document.getElementById('b-misafir-bekle').style.display = me.host ? 'none' : 'block';
+function goBekleme(kod){
+  setupHeader(kod);
+  const link = location.origin + location.pathname + '?oda=' + kod;
+  document.getElementById('b-kod').textContent=kod;
+  document.getElementById('b-link').textContent=link;
+  document.getElementById('b-host-ctrl').style.display=me.host?'block':'none';
+  document.getElementById('b-misafir-bekle').style.display=me.host?'none':'block';
   switchS('s-bekleme');
-  renderBeklemeOyuncular(oda);
-  startPoll(pollBekleme);
+  odaDinle(kod, onOdaGuncelle);
 }
 
-function setupHeader(kod){
-  document.getElementById('h-oda').textContent=kod; document.getElementById('h-oda').style.display='block';
-  document.getElementById('h-cikis').style.display='flex';
-}
-function hideHeader(){
-  document.getElementById('h-oda').style.display='none'; document.getElementById('h-cikis').style.display='none';
-}
-
-function kopyalaLink(){
+window.kopyalaLink = ()=>{
   const l=document.getElementById('b-link').textContent;
   navigator.clipboard.writeText(l).then(()=>toast('Link kopyalandı!')).catch(()=>{ const ta=document.createElement('textarea'); ta.value=l; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta); toast('Link kopyalandı!'); });
+};
+
+// ── Ana listener ──
+function onOdaGuncelle(oda){
+  if(!oda){ toast('Oda kapandı!'); gLanding(); return; }
+
+  const durum = oda.durum;
+  const aktifTur = oda.aktifTur||0;
+
+  // Bekleme ekranı oyuncu listesi
+  if(durum==='bekleme'){
+    renderBeklemeOyuncular(oda);
+    return;
+  }
+
+  // Durum veya tur değişti
+  const key = durum+'_'+aktifTur;
+
+  if(durum==='oyun'){
+    if(lastDurum!=='oyun' || lastTur!==aktifTur){
+      lastDurum='oyun'; lastTur=aktifTur;
+      stopGameTimer(); cevapVerildi=false; duraklandi=false;
+      switchS('s-oyun');
+      renderOyunSayfasi(oda);
+    } else {
+      // Sadece skor ve durum güncelle
+      renderSkorPanel(oda);
+      renderDurumPanel(oda);
+    }
+  }
+
+  if(durum==='oylama' && (lastDurum!=='oylama'||lastTur!==aktifTur)){
+    lastDurum='oylama'; lastTur=aktifTur;
+    stopGameTimer();
+    switchS('s-oy');
+    renderOySayfasi(oda);
+  } else if(durum==='oylama'){
+    renderOySayfasi(oda);
+  }
+
+  if(durum==='sonuc' && (lastDurum!=='sonuc'||lastTur!==aktifTur)){
+    lastDurum='sonuc'; lastTur=aktifTur;
+    switchS('s-sonuc');
+    renderSonucSayfasi(oda);
+  } else if(durum==='sonuc'){
+    renderSonucSayfasi(oda);
+  }
+
+  if(durum==='bitis' && lastDurum!=='bitis'){
+    lastDurum='bitis';
+    stopGameTimer();
+    gosterBitis(oda);
+  }
 }
 
 function renderBeklemeOyuncular(oda){
-  const kap=document.getElementById('b-oyuncular');
-  if(!oda.oyuncular.length){ kap.innerHTML='<div class="bos">Kimse yok henüz</div>'; return; }
-  kap.innerHTML=oda.oyuncular.map(o=>`
+  const oyuncular = Object.values(oda.oyuncular||{});
+  const kap = document.getElementById('b-oyuncular');
+  if(!oyuncular.length){ kap.innerHTML='<div class="bos">Kimse yok henüz</div>'; return; }
+  kap.innerHTML = oyuncular.map(o=>`
     <div class="oyuncu-row">
       <div class="avatar">${o.isim[0].toUpperCase()}</div>
       <div style="flex:1;font-weight:500;font-size:14px;">${o.isim}</div>
       ${o.host?'<span class="host-chip">Host</span>':''}
       ${o.id===me.id?'<span class="sen-chip">(sen)</span>':''}
     </div>`).join('');
-  if(me.host){ const btn=document.getElementById('b-baslat'); if(btn) btn.disabled = oda.oyuncular.length < 2; }
-}
-
-// ── Poll: Bekleme ──
-function pollBekleme(){
-  const oda=odaOku(me.oda); if(!oda){ toast('Oda kayboldu!'); gLanding(); return; }
-  renderBeklemeOyuncular(oda);
-  if(oda.durum==='oyun'){ stopPoll(); switchS('s-oyun'); renderOyunSayfasi(oda); startPoll(pollOyun); }
-  if(oda.durum==='bitis'){ stopPoll(); gosterBitis(oda); }
+  if(me.host){ const btn=document.getElementById('b-baslat'); if(btn) btn.disabled=oyuncular.length<2; }
 }
 
 // ── Host: Başlat ──
-function hostBaslat(){
-  const oda=odaOku(me.oda); if(!oda||oda.oyuncular.length<2){ toast('En az 1 katılımcı gerek!'); return; }
-  oda.durum='oyun'; oda.aktifTur=1; oda.harf=yeniHarf(); oda.cevaplar={}; oda.oylar={}; oda.oyTamamlandi={}; oda.turBaslangic=Date.now();
-  odaYaz(me.oda, oda);
-  stopPoll(); switchS('s-oyun'); renderOyunSayfasi(oda); startPoll(pollOyun);
-}
+window.hostBaslat = async ()=>{
+  const oda = await odaGet(me.oda);
+  const oyuncular = Object.values(oda.oyuncular||{});
+  if(oyuncular.length<2){ toast('En az 1 katılımcı gerek!'); return; }
+  await odaUpdate(me.oda, { durum:'oyun', aktifTur:1, harf:yeniHarf(), cevaplar:{}, oylar:{}, oyTamamlandi:{}, turBaslangic:Date.now() });
+};
 
-// ══════════════════════════════════════════════════════════════════
+// ══════════════════════════════════════════════
 // OYUN EKRANI
-// ══════════════════════════════════════════════════════════════════
-
+// ══════════════════════════════════════════════
 function renderOyunSayfasi(oda){
-  lastKey='oyun_'+oda.aktifTur;
-  cevapVerildi=false; duraklandi=false;
-  updateHarf(oda.harf); updateTurInfo(oda);
+  updateHarf(oda.harf);
+  updateTurInfo(oda);
   renderKatGrid(oda);
-  renderSkorPanel(oda); renderDurumPanel(oda);
+  renderSkorPanel(oda);
+  renderDurumPanel(oda);
   document.getElementById('btn-dur').disabled=false;
-  document.getElementById('btn-dur-dur').style.display= me.host?'flex':'none';
+  document.getElementById('btn-dur-dur').style.display=me.host?'flex':'none';
   document.getElementById('btn-dur-dur').textContent='⏸';
   document.getElementById('gonderildi-box').style.display='none';
   baslatTimer(oda);
@@ -674,6 +654,7 @@ function updateHarf(h){
   const d=document.getElementById('harf-daire'); if(d.textContent===h) return;
   d.textContent=h; d.classList.remove('pop'); void d.offsetWidth; d.classList.add('pop');
 }
+
 function updateTurInfo(oda){
   document.getElementById('tur-info').textContent=`Tur ${oda.aktifTur} / ${oda.ayar.tur}`;
   document.getElementById('tur-badge').textContent=`Tur ${oda.aktifTur}`;
@@ -686,17 +667,17 @@ function renderKatGrid(oda){
       <input class="alan-inp" id="inp-${i}" placeholder="${k}..." autocomplete="off" autocorrect="off" spellcheck="false">
     </div>`).join('');
   const ins=document.querySelectorAll('.alan-inp');
-  ins.forEach((inp,i)=>{ inp.addEventListener('keydown',e=>{ if(e.key==='Enter'){ if(i<ins.length-1) ins[i+1].focus(); else durKontrol(); } });
+  ins.forEach((inp,i)=>{
+    inp.addEventListener('keydown',e=>{ if(e.key==='Enter'){ if(i<ins.length-1) ins[i+1].focus(); else durKontrol(); } });
     inp.addEventListener('input',()=>otoCevap(oda));
   });
   if(ins.length) ins[0].focus();
 }
 
-function otoCevap(oda){
-  const o2=odaOku(me.oda); if(!o2) return;
-  const c={}; o2.ayar.kats.forEach((k,i)=>{ const el=document.getElementById(`inp-${i}`); if(el) c[k]=el.value.trim(); });
-  if(!o2.cevaplar) o2.cevaplar={};
-  o2.cevaplar[me.id]=c; odaYaz(me.oda,o2);
+async function otoCevap(oda){
+  const c={};
+  oda.ayar.kats.forEach((k,i)=>{ const el=document.getElementById(`inp-${i}`); if(el) c[k]=el.value.trim(); });
+  await update(ref(db,`odalar/${me.oda}/cevaplar/${me.id}`), c);
 }
 
 // ── Timer ──
@@ -706,158 +687,117 @@ function baslatTimer(oda){
   const gecen=Math.floor((Date.now()-(oda.turBaslangic||Date.now()))/1000);
   let kalan=Math.max(0,sure-gecen);
   setSure(kalan,sure);
-  gameT=setInterval(()=>{
+  gameTimer=setInterval(()=>{
     if(duraklandi) return;
     kalan--; setSure(kalan,sure);
     if(kalan<=0){ stopGameTimer(); if(!cevapVerildi) durKontrol(); }
   },1000);
 }
-function stopGameTimer(){ if(gameT){ clearInterval(gameT); gameT=null; } }
+
+function stopGameTimer(){ if(gameTimer){ clearInterval(gameTimer); gameTimer=null; } }
+
 function setSure(k,s){
   const d=document.getElementById('sure-num'); const f=document.getElementById('sure-fill');
   d.textContent=k+'s'; f.style.width=Math.max(0,(k/s)*100)+'%';
   const u=k<=10; d.classList.toggle('urgent',u); f.classList.toggle('urgent',u);
 }
-function toggleDur(){
-  duraklandi=!duraklandi;
-  document.getElementById('btn-dur-dur').textContent=duraklandi?'▶':'⏸';
-  toast(duraklandi?'Duraklatıldı':'Devam ediyor');
-}
 
-// ── Dur! Kontrol Et ──
-function durKontrol(){
+window.toggleDur=()=>{ duraklandi=!duraklandi; document.getElementById('btn-dur-dur').textContent=duraklandi?'▶':'⏸'; toast(duraklandi?'Duraklatıldı':'Devam ediyor'); };
+
+// ── Dur! ──
+window.durKontrol = async ()=>{
   if(cevapVerildi) return;
   cevapVerildi=true; stopGameTimer();
-  const oda=odaOku(me.oda); if(!oda) return;
-  const c={}; oda.ayar.kats.forEach((k,i)=>{ const el=document.getElementById(`inp-${i}`); if(el) c[k]=el.value.trim(); });
-  if(!oda.cevaplar) oda.cevaplar={};
-  oda.cevaplar[me.id]=c;
-
-  // Host ise oylamayı tetikle
-  if(me.host){
-    oda.durum='oylama';
-    // Oylar yapısını sıfırla
-    oda.oylar={};
-    oda.oyTamamlandi={};
-    oda.oyuncular.forEach(o=>{
-      oda.oylar[o.id]={};
-      oda.ayar.kats.forEach(k=>{ oda.oylar[o.id][k]={}; });
-    });
-  }
-  odaYaz(me.oda,oda);
-
+  const c={};
+  const oda = await odaGet(me.oda);
+  oda.ayar.kats.forEach((k,i)=>{ const el=document.getElementById(`inp-${i}`); if(el) c[k]=el.value.trim(); });
+  await update(ref(db,`odalar/${me.oda}/cevaplar/${me.id}`), c);
   document.getElementById('btn-dur').disabled=true;
   document.getElementById('gonderildi-box').style.display='block';
-  document.getElementById('gonderildi-box').textContent='✓ Cevapların gönderildi — oylama başlıyor...';
-}
 
-// ── Poll: Oyun ──
-function pollOyun(){
-  const oda=odaOku(me.oda); if(!oda){ toast('Bağlantı kesildi!'); gLanding(); return; }
-  renderSkorPanel(oda); renderDurumPanel(oda);
-
-  const k='oyun_'+oda.aktifTur;
-  if(oda.durum==='oyun' && k!==lastKey){
-    lastKey=k;
-    updateHarf(oda.harf); updateTurInfo(oda); renderKatGrid(oda);
-    cevapVerildi=false; duraklandi=false;
-    document.getElementById('btn-dur').disabled=false;
-    document.getElementById('gonderildi-box').style.display='none';
-    document.getElementById('btn-dur-dur').textContent='⏸';
-    baslatTimer(oda);
+  if(me.host){
+    // Oylamayı başlat
+    const oylar={};
+    const oyuncular=Object.values(oda.oyuncular||{});
+    oyuncular.forEach(o=>{ oylar[o.id]={}; oda.ayar.kats.forEach(k=>{ oylar[o.id][k]={}; }); });
+    await odaUpdate(me.oda, { durum:'oylama', oylar, oyTamamlandi:{} });
   }
-  if(oda.durum==='oylama' && lastKey!=='oylama_'+oda.aktifTur){
-    lastKey='oylama_'+oda.aktifTur;
-    stopPoll(); stopGameTimer();
-    switchS('s-oy'); oyVerildi=false; renderOySayfasi(oda); startPoll(pollOy);
-  }
-  if(oda.durum==='bitis'){ stopPoll(); stopGameTimer(); gosterBitis(oda); }
-}
+};
 
-// ── Skor & Durum ──
 function renderSkorPanel(oda){
-  const s=[...oda.oyuncular].sort((a,b)=>b.puan-a.puan);
-  document.getElementById('skor-rows').innerHTML=s.map((o,i)=>`
+  const oyuncular=Object.values(oda.oyuncular||{}).sort((a,b)=>b.puan-a.puan);
+  document.getElementById('skor-rows').innerHTML=oyuncular.map((o,i)=>`
     <div class="skor-row ${i===0&&o.puan>0?'gold':''}">
       <div class="skor-rank">${i===0&&o.puan>0?'★':i+1}</div>
       <div class="skor-isim">${o.isim}${o.id===me.id?' <span style="font-size:10px;color:var(--text3)">(sen)</span>':''}</div>
       <div class="skor-puan">${o.puan}</div>
     </div>`).join('');
 }
+
 function renderDurumPanel(oda){
-  document.getElementById('durum-rows').innerHTML=oda.oyuncular.map(o=>{
+  const oyuncular=Object.values(oda.oyuncular||{});
+  document.getElementById('durum-rows').innerHTML=oyuncular.map(o=>{
     const cv=(oda.cevaplar||{})[o.id]; const yaz=cv&&Object.values(cv).some(v=>v);
     return `<div class="durum-row"><span>${yaz?'✓':'⏳'}</span><span style="flex:1;font-size:13px;">${o.isim}</span><span style="font-size:11px;color:${yaz?'var(--green)':'var(--text3)'};">${yaz?'Hazır':'Yazıyor...'}</span></div>`;
   }).join('');
 }
 
-// ══════════════════════════════════════════════════════════════════
+// ══════════════════════════════════════════════
 // OY EKRANI
-// ══════════════════════════════════════════════════════════════════
+// ══════════════════════════════════════════════
+function kontrolBenimOylarim(oda){
+  const oyuncular=Object.values(oda.oyuncular||{});
+  for(const sahip of oyuncular){
+    if(sahip.id===me.id) continue;
+    const cevap=(oda.cevaplar||{})[sahip.id]||{};
+    for(const k of oda.ayar.kats){
+      if(!cevap[k]) continue;
+      const oylarBuKat=((oda.oylar||{})[sahip.id]||{})[k]||{};
+      if(oylarBuKat[me.id]===undefined) return false;
+    }
+  }
+  return true;
+}
 
 function renderOySayfasi(oda){
+  const oyuncular=Object.values(oda.oyuncular||{});
   document.getElementById('oy-baslik').textContent=`"${oda.harf}" Harfi — Oylama`;
   document.getElementById('oy-alt').textContent='Her oyuncunun cevabını oyla. Kendi cevabına oy veremezsin.';
+  const tamam=Object.keys(oda.oyTamamlandi||{}).length;
+  document.getElementById('oy-progress').style.width=oyuncular.length?(tamam/oyuncular.length*100)+'%':'0%';
+  const benimTamam=kontrolBenimOylarim(oda);
+  document.getElementById('oy-info-box').style.display=benimTamam?'block':'none';
 
-  const toplam = oda.oyuncular.length; // kaç kişi oy verecek
-  const tamamlandi = Object.keys(oda.oyTamamlandi||{}).length;
-  document.getElementById('oy-progress').style.width = toplam ? (tamamlandi/toplam*100)+'%' : '0%';
-
-  const benimOylarim = (oda.oylar||{});
-  let tumOylarımVerdimMi = kontrolBenimOylarim(oda);
-
-  document.getElementById('oy-info-box').style.display = tumOylarımVerdimMi ? 'block' : 'none';
-
-  const html = oda.oyuncular.map(sahip => {
+  document.getElementById('oy-kartlar').innerHTML=oyuncular.map(sahip=>{
     const cevap=(oda.cevaplar||{})[sahip.id]||{};
-    const benimCevap = sahip.id === me.id;
-
-    const satirlar = oda.ayar.kats.map(k=>{
-      const deger = cevap[k]||'';
-      const dogru = deger && norm(deger[0])===norm(oda.harf);
-
-      // Bu cevap için mevcut oylar
-      const oylarBuKat = ((oda.oylar||{})[sahip.id]||{})[k]||{};
-      const onaylayanlar = Object.entries(oylarBuKat).filter(([,v])=>v===true).map(([id])=>id);
-      const reddedenler = Object.entries(oylarBuKat).filter(([,v])=>v===false).map(([id])=>id);
-
-      // Benim oyum bu cevap için
-      const benimOyum = oylarBuKat[me.id]; // true/false/undefined
-
-      const miniDotlar = oda.oyuncular.filter(o=>o.id!==sahip.id).map(o=>{
-        const oy=oylarBuKat[o.id];
-        const cls = oy===true?'ok':oy===false?'no':'bekle';
-        const ico = oy===true?'✓':oy===false?'✗':'?';
+    const benimCevap=sahip.id===me.id;
+    const satirlar=oda.ayar.kats.map(k=>{
+      const deger=cevap[k]||'';
+      const dogru=deger&&norm(deger[0])===norm(oda.harf);
+      const oylarBuKat=((oda.oylar||{})[sahip.id]||{})[k]||{};
+      const benimOyum=oylarBuKat[me.id];
+      const miniDotlar=oyuncular.filter(o=>o.id!==sahip.id).map(o=>{
+        const oy=oylarBuKat[o.id]; const cls=oy===true?'ok':oy===false?'no':''; const ico=oy===true?'✓':oy===false?'✗':'?';
         return `<div class="mini-dot ${cls}" title="${o.isim}">${ico}</div>`;
       }).join('');
-
-      // Butonlar: Kendi cevabına oy vermez
-      let oyBtnHtml = '';
-      if(benimCevap){
-        oyBtnHtml = `<span class="kendi-label">Kendi cevabın</span>`;
-      } else if(!deger){
-        oyBtnHtml = `<span style="font-size:12px;color:var(--text3);">Boş</span>`;
-      } else {
-        const onayli = benimOyum===true ? 'onayli' : '';
-        const reddedildi = benimOyum===false ? 'reddedildi' : '';
-        const dis = tumOylarımVerdimMi ? 'disabled-vote' : '';
-        oyBtnHtml=`
-          <div class="oy-btns">
-            <button class="oy-btn ${onayli} ${dis}" onclick="oyVer('${sahip.id}','${k}',true,this)" ${dis?'disabled':''}>✓ Onayla</button>
-            <button class="oy-btn ${reddedildi} ${dis}" onclick="oyVer('${sahip.id}','${k}',false,this)" ${dis?'disabled':''}>✗ Reddet</button>
-          </div>`;
+      let oyBtnHtml='';
+      if(benimCevap) oyBtnHtml=`<span class="kendi-label">Kendi cevabın</span>`;
+      else if(!deger) oyBtnHtml=`<span style="font-size:12px;color:var(--text3);">Boş</span>`;
+      else {
+        const dis=benimTamam;
+        oyBtnHtml=`<div class="oy-btns">
+          <button class="oy-btn ${benimOyum===true?'onayli':''}" onclick="oyVer('${sahip.id}','${k}',true)" ${dis?'disabled':''}>✓</button>
+          <button class="oy-btn ${benimOyum===false?'reddedildi':''}" onclick="oyVer('${sahip.id}','${k}',false)" ${dis?'disabled':''}>✗</button>
+        </div>`;
       }
-
-      const hataVar = deger && !dogru;
       return `
         <div class="cevap-row ${benimCevap?'kendi-satir':''}">
           <span class="cevap-kat">${k}</span>
-          <span class="cevap-val ${!deger?'bos':''}" style="${hataVar?'color:var(--red)':''}">${deger||'—'}</span>
+          <span class="cevap-val ${!deger?'bos':''}" style="${deger&&!dogru?'color:var(--red)':''}">${deger||'—'}</span>
           ${oyBtnHtml}
         </div>
-        ${miniDotlar ? `<div class="oy-sonuc-bar"><span style="font-size:11px;color:var(--text3);">Oylar:</span><div class="mini-oy">${miniDotlar}</div></div>` : ''}`;
+        ${miniDotlar?`<div class="oy-sonuc-bar"><div class="mini-oy">${miniDotlar}</div></div>`:''}`;
     }).join('');
-
     return `
       <div class="oyuncu-oy-kart">
         <div class="oyuncu-oy-baslik">
@@ -868,188 +808,113 @@ function renderOySayfasi(oda){
         <div class="cevap-rows">${satirlar}</div>
       </div>`;
   }).join('');
-
-  document.getElementById('oy-kartlar').innerHTML = html;
 }
 
-function kontrolBenimOylarim(oda){
-  // Kendi dışındaki herkese oy verdim mi?
-  const digerler = oda.oyuncular.filter(o=>o.id!==me.id);
-  for(const sahip of digerler){
-    const cevap=(oda.cevaplar||{})[sahip.id]||{};
-    for(const k of oda.ayar.kats){
-      const deger=cevap[k]||'';
-      if(!deger) continue; // boş cevaba oy vermek gerekmez
-      const oylarBuKat=((oda.oylar||{})[sahip.id]||{})[k]||{};
-      if(oylarBuKat[me.id]===undefined) return false; // oy verilmemiş
-    }
-  }
-  return true;
-}
-
-function oyVer(sahipId, kat, deger, btn){
+window.oyVer = async (sahipId, kat, deger)=>{
   if(sahipId===me.id) return;
-  const oda=odaOku(me.oda); if(!oda) return;
-  if(!oda.oylar) oda.oylar={};
-  if(!oda.oylar[sahipId]) oda.oylar[sahipId]={};
-  if(!oda.oylar[sahipId][kat]) oda.oylar[sahipId][kat]={};
-  oda.oylar[sahipId][kat][me.id]=deger;
-  odaYaz(me.oda, oda);
-
-  // Benim tüm oylarım tamam mı?
-  const tamam = kontrolBenimOylarim(oda);
-  if(tamam){
-    if(!oda.oyTamamlandi) oda.oyTamamlandi={};
-    oda.oyTamamlandi[me.id]=true;
-    odaYaz(me.oda, oda);
-    document.getElementById('oy-info-box').style.display='block';
-    // Butonları disable et
-    document.querySelectorAll('.oy-btn').forEach(b=>{ b.classList.add('disabled-vote'); b.disabled=true; });
-    // Host ise tüm oylar bitti mi kontrol et
-    if(me.host) checkAllVotesDone(oda);
+  await set(ref(db,`odalar/${me.oda}/oylar/${sahipId}/${kat}/${me.id}`), deger);
+  const oda=await odaGet(me.oda);
+  if(kontrolBenimOylarim(oda)){
+    await set(ref(db,`odalar/${me.oda}/oyTamamlandi/${me.id}`), true);
+    // Tüm oylar bitti mi? Host hesaplar
+    if(me.host){
+      const oyuncular=Object.values(oda.oyuncular||{});
+      const herkesVerdimi=oyuncular.every(o=>(oda.oyTamamlandi||{})[o.id] || o.id===me.id);
+      const yeniOyTamamlandi={...(oda.oyTamamlandi||{}), [me.id]:true};
+      const herkesVerdimi2=oyuncular.every(o=>yeniOyTamamlandi[o.id]);
+      if(herkesVerdimi2) await oylamayiBitir(oda);
+    }
+  } else if(me.host){
+    // Normal oy verdi ama henüz tamamlamadı — yine de kontrol et
+    const oda2=await odaGet(me.oda);
+    const oyuncular=Object.values(oda2.oyuncular||{});
+    const herkesVerdimi=oyuncular.every(o=>(oda2.oyTamamlandi||{})[o.id]);
+    if(herkesVerdimi) await oylamayiBitir(oda2);
   }
+};
 
-  // Anlık görsel güncelleme
-  const satir=btn.closest('.cevap-row');
-  satir.querySelectorAll('.oy-btn').forEach(b=>{
-    b.classList.remove('onayli','reddedildi');
-  });
-  btn.classList.add(deger?'onayli':'reddedildi');
-
-  // mini-dot güncelle
-  renderOySayfasi(odaOku(me.oda));
+// Realtime'da oyTamamlandi değişince host kontrol etmeli
+// Bunu listener'da yapıyoruz - durum oylama iken
+async function checkOylamaTamamlandi(oda){
+  if(!me.host || oda.durum!=='oylama') return;
+  const oyuncular=Object.values(oda.oyuncular||{});
+  const herkesVerdimi=oyuncular.every(o=>(oda.oyTamamlandi||{})[o.id]);
+  if(herkesVerdimi) await oylamayiBitir(oda);
 }
 
-function checkAllVotesDone(oda){
-  const herkes = oda.oyuncular.length;
-  const tamam = Object.keys(oda.oyTamamlandi||{}).length;
-  if(tamam>=herkes){ oylamayiBitir(oda); }
+// onOdaGuncelle'de oylama durumunda çağır
+const _origOnOda = onOdaGuncelle;
+// Override ekle
+function onOdaGuncelle(oda){
+  if(!oda){ toast('Oda kapandı!'); gLanding(); return; }
+  if(oda.durum==='oylama' && me.host) checkOylamaTamamlandi(oda);
+  _origOnOda(oda); // bu recursive olur, direkt içeride halledelim
 }
 
-function oylamayiBitir(oda){
-  // Puanları hesapla
-  oda.oyuncular.forEach(sahip=>{
+async function oylamayiBitir(oda){
+  const oyuncular=Object.values(oda.oyuncular||{});
+  const guncelPuanlar={};
+  oyuncular.forEach(sahip=>{
     let kazanilan=0;
     oda.ayar.kats.forEach(k=>{
       const deger=(oda.cevaplar[sahip.id]||{})[k]||'';
       if(!deger) return;
-      const oylarBuKat=(oda.oylar[sahip.id]||{})[k]||{};
-      const digerSayi=oda.oyuncular.filter(o=>o.id!==sahip.id).length;
-      if(digerSayi===0){ kazanilan+=oda.ayar.puan; return; }
+      const oylarBuKat=((oda.oylar[sahip.id]||{})[k])||{};
+      const digerSayi=oyuncular.filter(o=>o.id!==sahip.id).length;
       const onaylayan=Object.values(oylarBuKat).filter(v=>v===true).length;
-      if(onaylayan>0) kazanilan+=oda.ayar.puan;
+      if(digerSayi===0||onaylayan>0) kazanilan+=oda.ayar.puan;
     });
-    sahip.puan+=kazanilan;
-    sahip._turKazanilan=kazanilan; // geçici, sonuç ekranı için
+    guncelPuanlar[`oyuncular/${sahip.id}/puan`]=(sahip.puan||0)+kazanilan;
+    guncelPuanlar[`oyuncular/${sahip.id}/_turKazanilan`]=kazanilan;
   });
-  oda.durum='sonuc';
-  odaYaz(me.oda, oda);
+  guncelPuanlar['durum']='sonuc';
+  await odaUpdate(me.oda, guncelPuanlar);
 }
 
-// ── Poll: Oylama ──
-function pollOy(){
-  const oda=odaOku(me.oda); if(!oda){ toast('Bağlantı kesildi!'); gLanding(); return; }
-
-  // Progress güncellemesi
-  const toplam=oda.oyuncular.length;
-  const tamam=Object.keys(oda.oyTamamlandi||{}).length;
-  document.getElementById('oy-progress').style.width=toplam?(tamam/toplam*100)+'%':'0%';
-
-  // Mini-dot güncelleme (başkaları oy verdikçe)
-  renderOySayfasi(oda);
-
-  // Tüm oylar bittiyse host otomatik bitirir
-  if(me.host && oda.durum==='oylama'){
-    const herkesVerdii = oda.oyuncular.every(o=>(oda.oyTamamlandi||{})[o.id]);
-    if(herkesVerdii) oylamayiBitir(oda);
-  }
-
-  if(oda.durum==='sonuc' && lastKey!=='sonuc_'+oda.aktifTur){
-    lastKey='sonuc_'+oda.aktifTur;
-    stopPoll(); switchS('s-sonuc'); renderSonucSayfasi(oda); startPoll(pollSonuc);
-  }
-  if(oda.durum==='bitis'){ stopPoll(); gosterBitis(oda); }
-}
-
-// ══════════════════════════════════════════════════════════════════
+// ══════════════════════════════════════════════
 // SONUÇ EKRANI
-// ══════════════════════════════════════════════════════════════════
-
+// ══════════════════════════════════════════════
 function renderSonucSayfasi(oda){
   document.getElementById('sonuc-baslik').textContent=`Tur ${oda.aktifTur} Sonucu — "${oda.harf}"`;
-
-  const html = oda.oyuncular.map(sahip=>{
+  const oyuncular=Object.values(oda.oyuncular||{}).sort((a,b)=>b.puan-a.puan);
+  document.getElementById('sonuc-kartlar').innerHTML=oyuncular.map(sahip=>{
     const cevap=(oda.cevaplar||{})[sahip.id]||{};
     const kazanilan=sahip._turKazanilan||0;
-
     const satirlar=oda.ayar.kats.map(k=>{
       const deger=cevap[k]||'';
       const oylarBuKat=((oda.oylar||{})[sahip.id]||{})[k]||{};
-      const digerSayi=oda.oyuncular.filter(o=>o.id!==sahip.id).length;
+      const digerSayi=oyuncular.filter(o=>o.id!==sahip.id).length;
       const onaylayan=Object.values(oylarBuKat).filter(v=>v===true).length;
       const reddeden=Object.values(oylarBuKat).filter(v=>v===false).length;
       const puanAldi=deger&&(digerSayi===0||onaylayan>0);
-
-      let oyTxt='';
-      if(deger && digerSayi>0) oyTxt=`${onaylayan}✓ ${reddeden}✗`;
-      else if(deger && digerSayi===0) oyTxt='Tek oyuncu';
-
       return `<div class="sonuc-cevap-row">
         <span class="sonuc-kat">${k}</span>
         <span class="sonuc-val" style="${!deger?'color:var(--text3);font-style:italic':puanAldi?'color:var(--green)':'color:var(--red)'}">${deger||'—'}</span>
-        <span class="sonuc-oy-say ${puanAldi&&deger?'tam':!deger?'':'sifir'}">${oyTxt}</span>
+        <span class="sonuc-oy-say ${puanAldi&&deger?'tam':!deger?'':'sifir'}">${deger&&digerSayi>0?onaylayan+'✓ '+reddeden+'✗':''}</span>
       </div>`;
     }).join('');
-
-    return `
-      <div class="sonuc-oyuncu-kart">
-        <div class="sonuc-oyuncu-head">
-          <div class="avatar">${sahip.isim[0].toUpperCase()}</div>
-          <div class="sonuc-oyuncu-isim">${sahip.isim}${sahip.id===me.id?' <span style="font-size:11px;color:var(--text3)">(sen)</span>':''}</div>
-          <span class="sonuc-puan-kazanilan">+${kazanilan} puan</span>
-          <span class="sonuc-puan-total">${sahip.puan} toplam</span>
-        </div>
-        <div class="sonuc-cevap-rows">${satirlar}</div>
-      </div>`;
+    return `<div class="sonuc-oyuncu-kart">
+      <div class="sonuc-oyuncu-head">
+        <div class="avatar">${sahip.isim[0].toUpperCase()}</div>
+        <div class="sonuc-oyuncu-isim">${sahip.isim}${sahip.id===me.id?' <span style="font-size:11px;color:var(--text3)">(sen)</span>':''}</div>
+        <span class="sonuc-puan-kazanilan">+${kazanilan}</span>
+        <span class="sonuc-puan-total">${sahip.puan}</span>
+      </div>
+      <div class="sonuc-cevap-rows">${satirlar}</div>
+    </div>`;
   }).join('');
-  document.getElementById('sonuc-kartlar').innerHTML=html;
-
-  // Sonraki tur / bitir butonu
-  const bitti = oda.aktifTur>=oda.ayar.tur;
-  document.getElementById('btn-sonraki').style.display = me.host&&!bitti ? 'flex' : 'none';
-  document.getElementById('sonuc-bekle-box').style.display = !me.host&&!bitti ? 'block' : 'none';
-  if(bitti && me.host){
-    // Otomatik bitis
-    setTimeout(()=>{ const o2=odaOku(me.oda); if(o2){ o2.durum='bitis'; odaYaz(me.oda,o2); gosterBitis(o2); } },1500);
-  }
+  const bitti=oda.aktifTur>=oda.ayar.tur;
+  document.getElementById('btn-sonraki').style.display=me.host&&!bitti?'flex':'none';
+  document.getElementById('sonuc-bekle-box').style.display=!me.host&&!bitti?'block':'none';
 }
 
-function sonrakiTur(){
-  const oda=odaOku(me.oda); if(!oda) return;
-  oda.aktifTur++; oda.harf=yeniHarf(); oda.cevaplar={}; oda.oylar={}; oda.oyTamamlandi={};
-  oda.durum='oyun'; oda.turBaslangic=Date.now();
-  oda.oyuncular.forEach(o=>delete o._turKazanilan);
-  odaYaz(me.oda, oda);
-  stopPoll(); switchS('s-oyun'); renderOyunSayfasi(oda); startPoll(pollOyun);
-}
-
-// ── Poll: Sonuç ──
-function pollSonuc(){
-  const oda=odaOku(me.oda); if(!oda) return;
-  renderSonucSayfasi(oda);
-  if(oda.durum==='oyun' && lastKey!=='oyun_'+oda.aktifTur){
-    lastKey='oyun_'+oda.aktifTur;
-    stopPoll(); switchS('s-oyun'); renderOyunSayfasi(oda); startPoll(pollOyun);
-  }
-  if(oda.durum==='bitis' && lastKey!=='bitis'){
-    lastKey='bitis'; stopPoll(); gosterBitis(oda);
-  }
-}
+window.sonrakiTur = async ()=>{
+  await odaUpdate(me.oda, { durum:'oyun', aktifTur:lastTur+1, harf:yeniHarf(), cevaplar:{}, oylar:{}, oyTamamlandi:{}, turBaslangic:Date.now() });
+};
 
 // ── Oyun Bitti ──
 function gosterBitis(oda){
-  stopAll();
-  const s=[...oda.oyuncular].sort((a,b)=>b.puan-a.puan);
+  const s=Object.values(oda.oyuncular||{}).sort((a,b)=>b.puan-a.puan);
   document.getElementById('k-isim').textContent=s[0].isim;
   document.getElementById('k-puan').textContent=`${s[0].puan} puan ile birinci!`;
   document.getElementById('final-list').innerHTML=s.map((o,i)=>`
@@ -1062,31 +927,42 @@ function gosterBitis(oda){
 }
 
 // ── Çıkış ──
-function cikisYap(){
-  stopAll(); modalKapat('modal-bitis');
-  const oda=odaOku(me.oda);
-  if(oda){
-    oda.oyuncular=oda.oyuncular.filter(o=>o.id!==me.id);
-    if(!oda.oyuncular.length) odaSil(me.oda); else odaYaz(me.oda,oda);
+window.cikisYap = async ()=>{
+  stopGameTimer(); stopDinle(); modalKapat('modal-bitis');
+  if(me.oda){
+    const oda=await odaGet(me.oda);
+    if(oda){ await remove(ref(db,`odalar/${me.oda}/oyuncular/${me.id}`)); }
   }
-  me.oda=''; me.host=false; lastKey=''; hideHeader(); switchS('s-landing');
+  me.oda=''; me.host=false; lastDurum=''; lastTur=0; hideHeader(); switchS('s-landing');
+};
+
+function stopDinle(){
+  if(odaListener && me.oda){ off(ref(db,'odalar/'+me.oda)); odaListener=null; }
 }
 
-// ── Polling & Timers ──
-function startPoll(fn){ stopPoll(); fn(); pollT=setInterval(fn,POLL); }
-function stopPoll(){ if(pollT){ clearInterval(pollT); pollT=null; } }
-function stopAll(){ stopPoll(); stopGameTimer(); }
+// ── Gerçekten Firebase listener'ı burada bağlıyoruz ──
+function odaDinle(k, cb){
+  stopDinle();
+  me.oda=k;
+  odaListener=onValue(ref(db,'odalar/'+k), snap=>{
+    const oda=snap.val();
+    if(!oda){ toast('Oda kapandı!'); gLanding(); return; }
+    // oylama kontrolü host için
+    if(oda.durum==='oylama' && me.host){
+      const oyuncular=Object.values(oda.oyuncular||{});
+      const herkesVerdimi=oyuncular.every(o=>(oda.oyTamamlandi||{})[o.id]);
+      if(herkesVerdimi){ oylamayiBitir(oda); return; }
+    }
+    cb(oda);
+  });
+}
 
-// ── Init ──
-window.addEventListener('load',()=>{
-  renderKats();
-  const p=new URLSearchParams(location.search); const k=p.get('oda');
-  if(k){ document.getElementById('k-kod').value=k.toUpperCase(); switchS('s-katil'); }
-});
-document.getElementById('kat-inp').addEventListener('keydown',e=>{ if(e.key==='Enter') katEkle(); });
-document.getElementById('host-isim').addEventListener('keydown',e=>{ if(e.key==='Enter') odaOlustur(); });
-document.getElementById('k-isim').addEventListener('keydown',e=>{ if(e.key==='Enter') odaKatil(); });
+// Input event listeners
+document.getElementById('kat-inp').addEventListener('keydown',e=>{ if(e.key==='Enter') window.katEkle(); });
+document.getElementById('host-isim').addEventListener('keydown',e=>{ if(e.key==='Enter') window.odaOlustur(); });
+document.getElementById('k-isim').addEventListener('keydown',e=>{ if(e.key==='Enter') window.odaKatil(); });
 document.getElementById('k-kod').addEventListener('input',e=>{ e.target.value=e.target.value.toUpperCase(); });
+
 </script>
 </body>
 </html>
