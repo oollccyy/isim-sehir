@@ -902,13 +902,43 @@ function renderSonucSayfasi(oda){
       <div class="sonuc-cevap-rows">${satirlar}</div>
     </div>`;
   }).join('');
-  const bitti=oda.aktifTur>=oda.ayar.tur;
-  document.getElementById('btn-sonraki').style.display=me.host&&!bitti?'flex':'none';
-  document.getElementById('sonuc-bekle-box').style.display=!me.host&&!bitti?'block':'none';
+  const bitti = oda.aktifTur >= oda.ayar.tur;
+  document.getElementById('btn-sonraki').style.display = me.host && !bitti ? 'flex' : 'none';
+  document.getElementById('sonuc-bekle-box').style.display = !me.host && !bitti ? 'block' : 'none';
+  // Oyun bitti - host otomatik tetikle
+  if(bitti && me.host && lastDurum !== 'bitis'){
+    setTimeout(async()=>{
+      const o2 = await odaGet(me.oda);
+      if(o2 && o2.durum === 'sonuc') await odaUpdate(me.oda, { durum:'bitis' });
+    }, 3000);
+  }
 }
 
 window.sonrakiTur = async ()=>{
-  await odaUpdate(me.oda, { durum:'oyun', aktifTur:lastTur+1, harf:yeniHarf(), cevaplar:{}, oylar:{}, oyTamamlandi:{}, turBaslangic:Date.now() });
+  const oda = await odaGet(me.oda);
+  if(!oda) return;
+  const yeniTur = (oda.aktifTur||0) + 1;
+
+  // _turKazanilan temizle
+  const temizOyuncular = {};
+  Object.values(oda.oyuncular||{}).forEach(o=>{
+    temizOyuncular[o.id] = { id:o.id, isim:o.isim, puan:o.puan, host:o.host||false };
+  });
+
+  if(yeniTur > oda.ayar.tur){
+    await odaUpdate(me.oda, { durum:'bitis' });
+  } else {
+    await odaUpdate(me.oda, {
+      durum:'oyun',
+      aktifTur: yeniTur,
+      harf: yeniHarf(),
+      cevaplar:{},
+      oylar:{},
+      oyTamamlandi:{},
+      turBaslangic: Date.now(),
+      oyuncular: temizOyuncular
+    });
+  }
 };
 
 // ── Oyun Bitti ──
