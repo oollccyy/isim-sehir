@@ -821,33 +821,33 @@ function renderOySayfasi(oda){
 
 window.oyVer = async (sahipId, kat, deger)=>{
   if(sahipId===me.id) return;
+  // Oyu yaz
   await set(ref(db,`odalar/${me.oda}/oylar/${sahipId}/${kat}/${me.id}`), deger);
-  const oda=await odaGet(me.oda);
+  // Firebase'den güncel veriyi oku
+  const oda = await odaGet(me.oda);
+  if(!oda) return;
+  // Tüm oylarımı verdim mi?
   if(kontrolBenimOylarim(oda)){
     await set(ref(db,`odalar/${me.oda}/oyTamamlandi/${me.id}`), true);
-    // Tüm oylar bitti mi? Host hesaplar
-    if(me.host){
-      const oyuncular=Object.values(oda.oyuncular||{});
-      const herkesVerdimi=oyuncular.every(o=>(oda.oyTamamlandi||{})[o.id] || o.id===me.id);
-      const yeniOyTamamlandi={...(oda.oyTamamlandi||{}), [me.id]:true};
-      const herkesVerdimi2=oyuncular.every(o=>yeniOyTamamlandi[o.id]);
-      if(herkesVerdimi2) await oylamayiBitir(oda);
-    }
-  } else if(me.host){
-    // Normal oy verdi ama henüz tamamlamadı — yine de kontrol et
-    const oda2=await odaGet(me.oda);
-    const oyuncular=Object.values(oda2.oyuncular||{});
-    const herkesVerdimi=oyuncular.every(o=>(oda2.oyTamamlandi||{})[o.id]);
-    if(herkesVerdimi) await oylamayiBitir(oda2);
+  }
+  // Host ise tüm oyTamamlandi'yı kontrol et
+  if(me.host){
+    const oda2 = await odaGet(me.oda);
+    if(!oda2) return;
+    const oyuncular = Object.values(oda2.oyuncular||{});
+    const herkes = oyuncular.every(o=>(oda2.oyTamamlandi||{})[o.id]);
+    if(herkes) await oylamayiBitir(oda2);
   }
 };
 
-// Oylama tamamlanma kontrolü - onOdaGuncelle içinde çağrılır
+// Oylama tamamlanma kontrolü - onOdaGuncelle içinde çağrılır (sadece host)
 async function checkOylamaTamamlandi(oda){
   if(!me.host || oda.durum!=='oylama') return;
-  const oyuncular=Object.values(oda.oyuncular||{});
-  const herkesVerdimi=oyuncular.every(o=>(oda.oyTamamlandi||{})[o.id]);
-  if(herkesVerdimi) await oylamayiBitir(oda);
+  const oyuncular = Object.values(oda.oyuncular||{});
+  if(oyuncular.length === 0) return;
+  const tamamlandi = oda.oyTamamlandi || {};
+  const herkes = oyuncular.every(o => tamamlandi[o.id] === true);
+  if(herkes) await oylamayiBitir(oda);
 }
 
 async function oylamayiBitir(oda){
